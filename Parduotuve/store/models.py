@@ -18,8 +18,6 @@ class Product(models.Model):
 
 	def __str__(self):
 		return self.name
-	# Below property tells, tht if no image is uploaded,
-	# it will show broken image picture
 	@property
 	def imageURL(self):
 		try:
@@ -43,7 +41,6 @@ class Order(models.Model):
 		shipping = False
 		orderitems = self.orderitem_set.all()
 		for i in orderitems:
-			# if, a product is not digital, then it has to be shipped
 			if i.product.digital == False:
 				shipping = True
 		return shipping
